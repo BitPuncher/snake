@@ -15,3 +15,10 @@
 .row {
   width:600px;
 }
+
+.E.A {
+	background-color: red;
+  width: 10px;
+  height: 10px;
+  float:left;
+}
