@@ -9,18 +9,14 @@
 
   var newTile
 
-  var render = Board.render = function() {
-    var gridString = "";
-    for (var i = 0; i < height; i++) {
-      for (var j = 0; j < width; j++) {
-        if (this.snake.occupiesCoord([i, j]) {
-          gridString += "S";
-        } else {
-          gridString += ".";
-        }
-      }
+  var render = Board.prototype.render = function() {
+    var boardState = [];
+
+    for (var i = 0; i < this.snake.segments.length; i++) {
+      boardState.push(["S", this.snake.segments[i]]);
     }
-    return gridString;
+
+    return boardState;
   }
 
 

@@ -9,8 +9,8 @@
   var DIR_VECS = { "N": [0, -1], "E": [1, 0], "S": [0, 1], "W": [-1, 0] };
 
   var move = Snake.prototype.move = function () {
-    head = this.segments[0];
-    this.segments.shift(head.plus(DIR_VECS[this.dir]));
+    var head = this.segments[0];
+    this.segments.unshift(head.plus(DIR_VECS[this.dir]));
     this.segments.pop();
   }
 
@@ -18,7 +18,7 @@
     this.dir = newDir;
   }
 
-  var occupiesCoord = Snake.occupiesCoord = function (coord) {
+  var occupiesCoord = Snake.prototype.occupiesCoord = function (coord) {
     var occupied = false;
     for (i = 0; i < this.segments.length; i++) {
       occupied = occupied || this.segments[i].equals(coord);

@@ -1,7 +1,20 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="hanoi.css">
+    <link rel="stylesheet" type="text/css" href="snake.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="keymaster.js"></script>
     <script type="text/javascript" src="snake.js"></script>
+    <script type="text/javascript" src="board.js"></script>
+    <script type="text/javascript" src="game.js"></script>
+    <script type="text/javascript" src="snake_ui.js"></script>
+    <script type="text/javascript">
+    $(function() {
+      var $board = $('#board');
+      console.log($board);
+      ui = new SnakeGame.UI($board);
+      ui.startGame();
+    })
+    </script>
   </head>
   <body>
     <div id="board"></div>
