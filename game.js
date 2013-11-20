@@ -12,18 +12,19 @@
   }
 
   var checkCollisions = Game.prototype.checkCollisions = function () {
+		that = this;
+
   	SnakeGame.collides(this.snake.segments, this.snake.segments, function() {
   		this.gameOver = true;
   	});
 
-  	that = this;
   	SnakeGame.collides(that.board.apples, that.snake.segments,
   		function (apple, _) {
   			that.board.apples = that.board.apples.filter(function(element) {
   			 return !apple.equals(element) 
   			}, that.board.apples);
 
-  			that.board.snake.grow += 1;
+  			that.board.snake.grow += 3;
   			 
   		});
   }
