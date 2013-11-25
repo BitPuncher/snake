@@ -4,7 +4,7 @@
   var Snake = SnakeGame.Snake = function (dir, xPos, yPos) {
     this.dir = dir;
     this.segments = [new SnakeGame.Coord(xPos, yPos)];
-    this.grow = 0;
+    this.grow = 5;
   }
 
   var DIR_VECS = { "N": [0, -1], "E": [1, 0], "S": [0, 1], "W": [-1, 0] };
@@ -49,6 +49,18 @@
       Math.floor(Math.random() * height));
   }
 
+  var Square = Coord.Square = function (origin, width, height) {
+    var coordinates = [];
+    for (var x = 0; x < width; x++){
+      coordinates.push(new Coord(x + origin.xPos, origin.yPos));
+      coordinates.push(new Coord(x + origin.xPos, origin.yPos + height - 1));
+    }
 
+    for (var y = 0; y < height; y++){
+      coordinates.push(new Coord(origin.xPos, y + origin.yPos));
+      coordinates.push(new Coord(origin.xPos + width - 1, y + origin.yPos));
+    }
+    return coordinates;
+  }
 
 })(this);

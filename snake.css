@@ -1,8 +1,5 @@
 .E.S {
   background-color: green;
-  width: 10px;
-  height: 10px;
-  float:left;
 }
 
 .E {
@@ -14,11 +11,41 @@
 
 .row {
   width:600px;
+  height: 10px;
 }
 
 .E.A {
 	background-color: red;
-  width: 10px;
-  height: 10px;
-  float:left;
+}
+
+.E.B {
+  background-color: black;
+}
+
+#board {
+  display: inline-block;
+}
+
+#content {
+  text-align: center;
+}
+
+#description {
+  font-size: 32;
+}
+
+#header {
+  text-align: center;
+}
+
+.subtext {
+  font-size: 24;
+}
+
+.no-close .ui-dialog-titlebar-close{
+  display: none;
+}
+
+.control.ui-icon{
+  display: inline-block;
 }

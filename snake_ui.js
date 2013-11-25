@@ -8,6 +8,7 @@
   }
 
   var initUI = UI.prototype.initUI = function () {
+    this.container.html('');
     for (var i = 0; i < this.game.board.height; i++) {
       var row = $("<div class='row'></div>");
       for (var j = 0; j < this.game.board.width; j++) {
@@ -15,11 +16,10 @@
       }
       this.container.append(row);
     }
-
   }
 
   var draw = UI.prototype.draw = function () {
-    var thisRender = this.game.board.render();    
+    var thisRender = this.game.board.render();
 
     for (var i = 0; i < this.lastRender.length; i++) {
       row = this.lastRender[i][1].yPos;
@@ -48,10 +48,12 @@
     key('right', function() { snake.turn("E") });
     key('down', function() { snake.turn("S") });
     key('left', function() { snake.turn("W") });
+    key('p', function() { debugger });
   }
 
   var startGame = UI.prototype.startGame = function() {
     var that = this;
+    this.game.score = 0;
     this.bindKeys();
     this.initUI();
     this.mainTimer = window.setInterval(function () {
@@ -59,7 +61,7 @@
       that.draw();
       that.game.checkCollisions();
       if (that.game.gameOver) {
-        stopGame();
+        that.stopGame();
       }
 
     }, (1000/15));
@@ -73,16 +75,34 @@
         location = SnakeGame.Coord.Random(width, height);
       }
 
-      
+
       if (that.game.board.apples.length < 5) {
         that.game.board.placeApple(location);
       }
     }, (1000));
+
+    this.growthTimer = window.setInterval(function () {
+      that.game.snake.grow += 1;
+    }, (1000/3));
   }
 
   var stopGame = UI.prototype.stopGame = function() {
     window.clearInterval(this.mainTimer);
     window.clearInterval(this.appleTimer);
+    window.clearInterval(this.growthTimer);
+    var modal = $('<div id="game-over-modal" title="Game Over!">' +
+      'You lost.</div>');
+    modal.dialog({appendTo:"#board", 
+      buttons: [{text:"Try again?", click:function() {
+        $(this).dialog("close");
+        (new SnakeGame.UI($('#board'))).startGame();
+        }}],
+      dialogClass: "no-close",
+      position: { my: "center", at: "center", of: "#board"},
+      resizable: false,
+      draggable: false,
+      modal: true,
+      });
   }
 
 
