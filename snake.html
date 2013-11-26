@@ -11,13 +11,6 @@
     <script type="text/javascript" src="snake_ui.js"></script>
     <script type="text/javascript" src="collisions.js"></script>
     <script type="text/javascript" src="array_helpers.js"></script>
-    <script type="text/javascript">
-    $(function() {
-      var $board = $('#board');
-      ui = new SnakeGame.UI($board);
-      ui.startGame();
-    })
-    </script>
   </head>
   <body>
     <div id="header"><h1>Ouroboros</h1></div>
@@ -33,5 +26,12 @@
       </div>
     </div>
     <div id="footer"></div>
+    <script type="text/javascript">
+    $(function() {
+      var $board = $('#board');
+      ui = new SnakeGame.UI($board);
+      ui.startGame();
+    })
+    </script>
  </body>
 </html>
