@@ -91,7 +91,7 @@
     window.clearInterval(this.appleTimer);
     window.clearInterval(this.growthTimer);
     var modal = $('<div id="game-over-modal" title="Game Over!">' +
-      'You lost.</div>');
+      'You lost. Your score: ' + this.game.score + '</div>');
     modal.dialog({appendTo:"#board", 
       buttons: [{text:"Try again?", click:function() {
         $(this).dialog("close");
