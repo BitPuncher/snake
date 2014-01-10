@@ -1,6 +1,6 @@
-snake
+Ouroboros (Snake)
 =====
 
-JavaScript snake game. Eat apples, grow longer.
+JavaScript snake game. Eat apples to score points. Run into your own tail to curb your growth. Be careful though: old tail segments become barriers after cutting.
 
-Move with the arrow keys, don't run into yourself or cross into the nega-zone by running off the edge of the map.
+Move with the wasd keys.
